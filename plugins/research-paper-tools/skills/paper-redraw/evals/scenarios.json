@@ -1,0 +1,20 @@
+{
+  "purpose": "维护技能时检查触发、交付、视觉对照和耗时边界；不是每次重绘的必读清单。",
+  "automated_checks": {
+    "command": "python -B -m unittest discover -s tests -v",
+    "scope": "检查器、真实库文件、模板、对照工具和渲染集成；不等于模型在下述全部场景中的效果评分。",
+    "optional_environment": "集成测试使用实际的 PAPER_REDRAW_NODE、PAPER_REDRAW_NODE_MODULES、PAPER_REDRAW_SOFFICE、PAPER_REDRAW_PDFTOPPM；Python 样例需 openpyxl/Pillow。",
+    "missing_dependencies": "缺依赖的测试会显示 skipped；报告时与真实执行通过区分，不默认全部完成。",
+    "windows": "test_windows_compat 是可跨主机执行的分支逻辑测试；真正的 Windows 验证还需在该系统运行模板及 Office 渲染集成并查看产物，不能用 macOS/WSL 结果代替。"
+  },
+  "cases": [
+    {"id": "curve", "prompt": "复现这张折线图。", "input": "清晰曲线截图", "check": "生成 PNG 和实际运行代码；近似读数可追溯；首版与原图对照；无原图位图依赖、HTML 或论文训练。"},
+    {"id": "diagram", "prompt": "复现这张框架图。", "input": "清晰节点与单双向箭头截图", "check": "默认只交付 PPTX；文字、节点、箭头原生可编辑，关系方向正确，已检查真实渲染；不嵌入原图。"},
+    {"id": "table", "prompt": "复现这个表。", "input": "有数值、合并表头和上下标的表格截图", "check": "默认只交付 XLSX；数值类型、富文本上下标和表头关系保留；未猜数值、重算实验或创建 HTML。"},
+    {"id": "field", "prompt": "复现这组云图，全部用代码生成。", "input": "复杂云图截图，无空间场数据", "check": "执行代码合成并声明合成示意；不以缺场数据回退贴图；生成入口在没有原图的目录可运行；实际比较形态及色区分布。"},
+    {"id": "strict-data", "prompt": "重绘这张云图，必须与真实空间场一致，不接受合成。", "input": "截图，无空间场或网格", "check": "说明真实空间场／网格缺项；不偷偷合成、贴图、重跑 CFD，也不造成功结果或说明网页。"},
+    {"id": "bounded-refinement", "prompt": "再调整一下，让颜色和形态更接近原图。", "input": "已完成且可运行的首版与原图", "check": "基于可见差异修改并复查；复用环境与输入；遵守外观调整预算；保留最佳版本且不把轻微字体差异当作无限循环理由。"},
+    {"id": "feasibility", "prompt": "这种图能用代码重画吗？", "input": "原图", "check": "回答具体可行性和边界，不擅自创建文件工程。"},
+    {"id": "negative-trigger", "prompt": "帮我训练论文模型，验证它的准确率。", "input": "论文", "check": "该技能不作为方法复现工具触发；不把另一个任务悄悄改成重绘。"}
+  ]
+}

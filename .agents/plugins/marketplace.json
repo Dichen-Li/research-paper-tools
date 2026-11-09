@@ -1,0 +1,15 @@
+{
+  "name": "research-paper-tools-marketplace",
+  "interface": {
+    "displayName": "Research Paper Tools"
+  },
+  "plugins": [
+    {
+      "name": "research-paper-tools",
+      "source": {
+        "source": "local",
+        "path": "./plugins/research-paper-tools"
+      }
+    }
+  ]
+}

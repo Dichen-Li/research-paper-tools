@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文图表重建"
+  short_description: "参照原图用代码重绘图形，将流程框架和表格重建为可编辑 PPT 与 Excel。"
+  default_prompt: "使用 $paper-redraw 重建指定论文图表，首版与原图对照后作有限调整，交付代码重绘图、可编辑 PPT 或 Excel。"

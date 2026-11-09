@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "research-paper-tools",
+  "version": "0.1.0",
+  "description": "Reconstruct figures and tables from research papers and create evidence-led academic presentations."
+}
